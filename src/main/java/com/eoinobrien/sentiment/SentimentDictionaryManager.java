@@ -39,6 +39,8 @@ public class SentimentDictionaryManager {
 
         try {
             Client client = TransportClient.builder().build().addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("46.101.74.48"), 9300));
+//            Node node = nodeBuilder().node();
+//            Client client = node.client();
 
             BulkRequestBuilder bulkRequest = client.prepareBulk();
             int count = 0;
@@ -59,6 +61,8 @@ public class SentimentDictionaryManager {
                 }
             }
 
+            client.close();
+//            node.close();
 
         } catch (IOException e) {
             e.printStackTrace();
